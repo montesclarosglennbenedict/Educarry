@@ -15,8 +15,14 @@ app.use(express.static('src/public'));
 const indexRouter = require('./src/routes/index');
 app.use('/', indexRouter);
 
-const searchRoutes = require('./src/routes/articulation-search/index');
-app.use('/articulation-search', searchRoutes);
+const articulationSearchRouter = require('./src/routes/articulation-search/index');
+app.use('/articulation-search', articulationSearchRouter);
+
+const majorTransferSearchRouter = require('./src/routes/major-transfer-search/index');
+app.use('/major-transfer-search', majorTransferSearchRouter);
+
+const geSearchRouter = require('./src/routes/ge-search/index');
+app.use('/ge-search', geSearchRouter);
 
 // Error handler middleware
 app.use((err, req, res, next) => {

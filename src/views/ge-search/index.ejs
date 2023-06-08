@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Educarry - Search Community College Classes</title>
+  <title>Educarry - Search General Education Classes</title>
   <link rel="stylesheet" href="/css/search/styles.css">
 </head>
 <body>
@@ -21,20 +21,26 @@
 
   <!-- Search Form -->
   <section class="search-form">
-    <h2>Search Community College Classes to UC/CSU</h2>
+    <h2>Search Community College Classes Fulfilling General Education Requirements</h2>
     <form action="#" method="GET">
       <div>
-        <label for="cc-course">Community College Course:</label>
-        <input type="text" id="cc-course" name="cc-course" placeholder="Enter the course code or name">
+        <label for="category">General Education Category:</label>
+        <select id="category" name="category">
+          <option value="">Select a category</option>
+          <option value="csu-ge">CSU GE-Breadth</option>
+          <option value="igetc">IGETC for UC and CSU</option>
+          <option value="uc-transfer">UC Transferable</option>
+          <!-- Add more general education categories as needed -->
+        </select>
       </div>
       <div>
-        <label for="uc-csu">UC/CSU Institution:</label>
-        <select id="uc-csu" name="uc-csu">
-          <option value="">Select an institution</option>
-          <option value="uc1">UC 1</option>
-          <option value="uc2">UC 2</option>
-          <option value="csu1">CSU 1</option>
-          <option value="csu2">CSU 2</option>
+        <label for="community-college">Community College:</label>
+        <select id="community-college" name="community-college">
+          <option value="">Select a community college</option>
+          <option value="cc1">Community College 1</option>
+          <option value="cc2">Community College 2</option>
+          <option value="cc3">Community College 3</option>
+          <!-- Add more community colleges as needed -->
         </select>
       </div>
       <div>
@@ -42,7 +48,7 @@
         <select id="order" name="order">
           <option value="">Default Order</option>
           <option value="alphabetical">Alphabetical</option>
-          <option value="transferability">Transferability</option>
+          <option value="course-number">Course Number</option>
           <!-- Add more ordering options as needed -->
         </select>
       </div>
