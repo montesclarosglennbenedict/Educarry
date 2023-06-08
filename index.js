@@ -15,6 +15,9 @@ app.use(express.static('src/public'));
 const indexRouter = require('./src/routes/index');
 app.use('/', indexRouter);
 
+const searchRoutes = require('./src/routes/articulation-search/index');
+app.use('/articulation-search', searchRoutes);
+
 // Error handler middleware
 app.use((err, req, res, next) => {
   console.error(err);

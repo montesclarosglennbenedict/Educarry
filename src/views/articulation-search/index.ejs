@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educarry - Search Community College Classes</title>
+  <link rel="stylesheet" href="/css/articulation-search/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1 class="logo">Educarry</h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Search Form -->
+  <section class="search-form">
+    <h2>Search Community College Classes to UC/CSU</h2>
+    <form action="#" method="GET">
+      <div>
+        <label for="cc-course">Community College Course:</label>
+        <input type="text" id="cc-course" name="cc-course" placeholder="Enter the course code or name">
+      </div>
+      <div>
+        <label for="uc-csu">UC/CSU Institution:</label>
+        <select id="uc-csu" name="uc-csu">
+          <option value="">Select an institution</option>
+          <option value="uc1">UC 1</option>
+          <option value="uc2">UC 2</option>
+          <option value="csu1">CSU 1</option>
+          <option value="csu2">CSU 2</option>
+        </select>
+      </div>
+      <div>
+        <label for="order">Organization Order:</label>
+        <select id="order" name="order">
+          <option value="">Default Order</option>
+          <option value="alphabetical">Alphabetical</option>
+          <option value="transferability">Transferability</option>
+          <!-- Add more ordering options as needed -->
+        </select>
+      </div>
+      <div>
+        <label for="filter">Filter:</label>
+        <select id="filter" name="filter">
+          <option value="">No Filter</option>
+          <option value="online">Online Courses</option>
+          <option value="location">Location-based</option>
+          <!-- Add more filtering options as needed -->
+        </select>
+      </div>
+      <button type="submit">Search</button>
+    </form>
+  </section>
+
+  <!-- Results Section -->
+  <section class="results">
+    <h3>Search Results</h3>
+    <p>Showing results for the search query...</p>
+    <ul>
+      <li>Result 1</li>
+      <li>Result 2</li>
+      <!-- Display search results dynamically based on the search query -->
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Educarry. All rights reserved.</p>
+  </footer>
+</body>
+</html>
