@@ -24,9 +24,12 @@ fs.readdirSync(routePath).forEach(folder => {
   }
 });
 
-const indexRouter = require('./src/routes/index');
-app.use('/', indexRouter);
-
+// Handle the root path ("/")
+const rootRouteFile = path.join(routePath, 'index.js');
+if (fs.existsSync(rootRouteFile)) {
+  const rootRoute = require(rootRouteFile);
+  app.use('/', rootRoute);
+}
 
 // Error handler middleware
 function errorHandler(err, req, res, next) {
@@ -41,3 +44,4 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
+
