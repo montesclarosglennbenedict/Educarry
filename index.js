@@ -1,35 +1,43 @@
 const express = require('express');
 const path = require('path');
-const app = express();
+const fs = require('fs');
 
-// Set 'views' directory and template engine
-app.set('views', path.join(__dirname, 'src/views'));
+const app = express();
+const viewsPath = path.join(__dirname, 'src/views');
+const routePath = path.join(__dirname, 'src/routes');
+
+app.set('views', viewsPath);
 app.set('view engine', 'ejs');
 
-// Serve static files from the 'public' directory
-app.use(express.static('src/public'));
+app.use(express.static(path.join(__dirname, 'src/public')));
 
-// ...
+// Include routes dynamically
+fs.readdirSync(routePath).forEach(folder => {
+  const routeFile = path.resolve(routePath, folder, 'index.js');
+  if (fs.existsSync(routeFile)) {
+    const route = require(routeFile);
+    if (folder === 'index') {
+      app.use('/', route); // Use root path ("/") for the index route
+    } else {
+      app.use(`/${folder}`, route); // Use folder name for other routes
+    }
+  }
+});
 
-// Include the routes
 const indexRouter = require('./src/routes/index');
 app.use('/', indexRouter);
 
-const articulationSearchRouter = require('./src/routes/articulation-search/index');
-app.use('/articulation-search', articulationSearchRouter);
-
-const majorTransferSearchRouter = require('./src/routes/major-transfer-search/index');
-app.use('/major-transfer-search', majorTransferSearchRouter);
-
-const geSearchRouter = require('./src/routes/ge-search/index');
-app.use('/ge-search', geSearchRouter);
 
 // Error handler middleware
-app.use((err, req, res, next) => {
+function errorHandler(err, req, res, next) {
   console.error(err);
   res.status(500).send('Internal Server Error');
-});
+}
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+app.use(errorHandler);
+
+const port = 3000;
+
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
 });
